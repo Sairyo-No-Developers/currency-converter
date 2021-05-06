@@ -1,0 +1,30 @@
+.dropdownMenu {
+	max-height: 300px;
+	overflow-y: auto;
+	background: #1f1f1f;
+	color: wheat;
+	box-shadow: rgba(0, 0, 0, 0.767) 0.3em 0.3em 0.3em;
+}
+
+.dropdownItem {
+	color: wheat;
+}
+
+.inputGroup {
+	box-shadow: rgba(0, 0, 0, 0.767) 0.3em 0.3em 0.3em;
+	input {
+		background: #1f1f1f;
+		border: none;
+		color: gainsboro;
+		font-size: 1.5rem;
+		&:hover,
+		&:active,
+		&:focus {
+			background: #1f1f1f;
+			color: gainsboro;
+		}
+		&::placeholder {
+			color: wheat;
+		}
+	}
+}
