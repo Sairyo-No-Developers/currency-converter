@@ -23,3 +23,6 @@ def getCurrencyTable():
 @app.route('/api/fetch-currencies')
 def fetch():
     return getCurrencyTable()
+
+if __name__ == '__main__':
+    app.run(port=6002)
