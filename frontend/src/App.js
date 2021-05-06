@@ -10,7 +10,9 @@ function App() {
 	const fetch = async () => {
 		try {
 			let data = await axios.get(
-				`${process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : ''}/api/fetch-currencies`
+				`${process.env.NODE_ENV === 'development'
+					? 'http://localhost:5000'
+					: 'https://mif.sairyonodevs.in'}/api/fetch-currencies`
 			);
 			setError('');
 			setRates(data.data);

@@ -5,7 +5,8 @@ import { useState } from 'react';
 export const Input = ({ rates, currency, setCurrency, amount, setAmount }) => {
 	return (
 		<div>
-			<div className={[ 'input-group mb-3 mt-5', s.inputGroup ].join(' ')}>
+			<label className={[ 'mt-5', s.label ].join(' ')}>Enter Your Amount</label>
+			<div className={[ 'input-group mb-3', s.inputGroup ].join(' ')}>
 				<input
 					type="number"
 					className="form-control"
@@ -30,6 +31,7 @@ export const Input = ({ rates, currency, setCurrency, amount, setAmount }) => {
 						key={nanoid()}
 						onClick={() => {
 							setCurrency('Indian Rupee');
+							localStorage.setItem('sndevs-mif-currency', 'Indian Rupee');
 						}}
 					>
 						<span className={[ 'dropdown-item', s.dropdownItem ].join(' ')}>Indian Rupee</span>
@@ -43,6 +45,7 @@ export const Input = ({ rates, currency, setCurrency, amount, setAmount }) => {
 								key={nanoid()}
 								onClick={() => {
 									setCurrency(e[0]);
+									localStorage.setItem('sndevs-mif-currency', e[0]);
 								}}
 							>
 								<span className={[ 'dropdown-item', s.dropdownItem ].join(' ')}>{e[0]}</span>

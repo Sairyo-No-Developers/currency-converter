@@ -17,7 +17,7 @@ Malaysian Ringgit
 Japanese Yen	
 Chinese Yuan Renminbi  
     */
-	const [ currency, setCurrency ] = useState('Indian Rupee');
+	const [ currency, setCurrency ] = useState(localStorage.getItem('sndevs-mif-currency') || 'Indian Rupee');
 	const [ amount, setAmount ] = useState(0.0);
 	return (
 		<div className={s.main}>
