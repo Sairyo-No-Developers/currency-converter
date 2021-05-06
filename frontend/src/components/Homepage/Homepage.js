@@ -3,6 +3,7 @@ import { CurrencyCard } from '../CurrencyCard/CurrencyCard';
 import { Input } from '../Input/Input';
 import s from './Homepage.module.scss';
 import loaderGif from '../../images/1479.gif';
+import LargeFull from '../../images/Large-Full.png';
 
 export const Homepage = ({ error, fetched, rates }) => {
 	/*
@@ -23,7 +24,9 @@ Chinese Yuan Renminbi
 		<div className={s.main}>
 			<div className={s.mainDiv}>
 				<div className="container">
-					<h1 className={s.mainHeader}>Money Is Funny</h1>
+					<div className={s.mainHeader}>
+						<img src={LargeFull} alt="Money Is Funny" />
+					</div>
 					<div className={s.quote}>"Your Personal Currency Exchange"</div>
 					<Input
 						rates={rates}
@@ -65,9 +68,10 @@ Chinese Yuan Renminbi
 			</div>
 			<footer className={s.footer}>
 				<span>
-					Made with ❤️ by <a href="https://www.abhishekadhikari.rocks">Abhishek Adhikari</a>,{' '}
+					Made with ❤️ by <a href="https://www.abhishekadhikari.rocks/">Abhishek Adhikari</a>,{' '}
 					<a href="https://github.com/AniketdCR7/">Aniket Datta</a> and{' '}
-					<a href="https://github.com/Amartya0">Amartya Jash</a>.
+					<a href="https://github.com/Amartya0/">Amartya Jash</a> |{' '}
+					<a href="https://www.sairyonodevs.in/">Sairyö No Developers</a>
 				</span>
 			</footer>
 		</div>

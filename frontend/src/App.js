@@ -11,7 +11,7 @@ function App() {
 		try {
 			let data = await axios.get(
 				`${process.env.NODE_ENV === 'development'
-					? 'http://localhost:5000'
+					? 'http://localhost:6002'
 					: 'https://mif.sairyonodevs.in'}/api/fetch-currencies`
 			);
 			setError('');

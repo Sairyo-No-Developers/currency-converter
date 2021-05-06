@@ -12,15 +12,28 @@
 	padding-bottom: 2rem;
 }
 
+// .mainHeader {
+// 	width: 100%;
+// 	text-align: center;
+// 	font-size: 4rem;
+// 	font-weight: bold;
+// 	color: whitesmoke;
+// 	text-shadow: black 0.3em 0.3em 0.4em;
+// 	margin-top: 2rem;
+// 	margin-bottom: 1rem;
+// }
+
 .mainHeader {
 	width: 100%;
-	text-align: center;
-	font-size: 4rem;
-	font-weight: bold;
-	color: whitesmoke;
-	text-shadow: black 0.3em 0.3em 0.4em;
-	margin-top: 2rem;
-	margin-bottom: 1rem;
+	display: grid;
+	place-content: center;
+	img {
+		max-width: 100%;
+		max-height: 12rem;
+		aspect-ratio: 1656/432;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
 }
 
 .quote {
