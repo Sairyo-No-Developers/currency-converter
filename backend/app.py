@@ -6,13 +6,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000","https://mif.sairyonodevs.in"]}})
 
 
 
 def getCurrencyTable():
-    # table .tablesorter.ratesTable
-    # tr td (td a) (td a)
     url = "https://www.x-rates.com/table/?from=INR&amount=1"
     doc = bs4(requests.get(url).content, 'html.parser')
     rates = {}
