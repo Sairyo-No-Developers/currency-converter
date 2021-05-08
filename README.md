@@ -2,12 +2,10 @@
 "Your Personal Currency Exchange"
 
 ## Overview
-Welcome, to our webapp, here you can input any currency value of your choice and our ghost will fetch you it's value in all other currencies of the world. Beware it can turn out to be a bit haunted! Hope you find this experiance unique and useful.
+Welcome, to our webapp, here you can input any currency value of your choice and our ghost will fetch you it's value in all other currencies of the world. Beware it can turn out to be a bit haunted! Hope you find this experience unique and useful.
 
 ## Documentation
-We created this webapp using **React**. Since we tried to make this project as minimal as we can, the backend is quite simple, we used **Python3** and **Flask** for this purpose. 
-For Currency convertion we didn't use any API. We used the method of **Web Scrapping** to satisfy the purpose. We used the site: [X-Rates Currency Excahnge Table](https://www.x-rates.com/table/?from=INR&amount=1), for the purpose of Web Scrapping, and did it using Python3 and **BeautifulSoup4**. A reason we preffered not to use any APIs, we didn't wanted to use any paid API. 
-
+We created this web app using **React**. Since we tried to make this project as minimal as we can, the backend is quite simple, we used **Python3** and **Flask** for this purpose. For Currency conversion, we didn't use any API. We used the method of Web Scraping to satisfy the purpose. We used the site: [X-Rates Currency Exchange Table](https://www.x-rates.com/table/?from=INR&amount=1), for the purpose of **Web Scrapping**, and did it using Python3 and **BeautifulSoup4**. A reason we preferred not to use any APIs, we didn't want to use any paid API.
 
 ## Dev Stack Used
 - NodeJs
@@ -41,7 +39,7 @@ npm run build
 ## Our Targeted Goals
 - [x] Create a minimal dark theme design using Bootstrap5 and Sass.
 - [x] For currency rates, scraping the web for it instead of using an api.
-- [x] Using Flask alogn with proper CORS setup.
+- [x] Using Flask along with proper CORS setup.
 - [ ] Setup proper testing in React using Jest.
 - [x] Built and Deployed to web using Nginx with ssl within 3 hours.
 
