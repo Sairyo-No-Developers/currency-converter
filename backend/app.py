@@ -23,7 +23,7 @@ def getCurrencyTable():
 
 @app.route('/')
 def home():
-    return 'API For Fetching Currency Rates. Use route /api/fetch-currencies'
+    return 'Currency Exchange API For Fetching Currency Rates. Use route /api/fetch-currencies'
 
 @app.route('/api/fetch-currencies')
 def fetch():
