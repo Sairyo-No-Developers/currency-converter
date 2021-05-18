@@ -33,7 +33,7 @@ def test_empty_db(client):
     """Start with a blank database."""
 
     rv = client.get('/')
-    assert b'API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
+    assert b'Currency Exchange API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=os.getenv('PORT', 6002))
