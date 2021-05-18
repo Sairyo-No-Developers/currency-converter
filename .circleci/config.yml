@@ -27,7 +27,7 @@ jobs:
                     - "/usr/local/lib/python3.9/site-packages"
     
     testing_stage:
-        docket:
+        docker:
             - image: 'cimg/python:current'
         steps:
             - checkout
