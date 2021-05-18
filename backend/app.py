@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs4
-
+import pytest
 from flask import Flask
 from flask_cors import CORS
 app = Flask(__name__)
@@ -20,9 +20,19 @@ def getCurrencyTable():
     del rates['Venezuelan Bolivar']
     return rates
 
+@app.route('/')
+def home():
+    return 'API For Fetching Currency Rates. Use route /api/fetch-currencies'
+
 @app.route('/api/fetch-currencies')
 def fetch():
     return getCurrencyTable()
 
+def test_empty_db(client):
+    """Start with a blank database."""
+
+    rv = client.get('/')
+    assert b'API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
+
 if __name__ == '__main__':
-    app.run(port=6002)
+    app.run(host="0.0.0.0",port=6002)
