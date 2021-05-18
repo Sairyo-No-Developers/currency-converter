@@ -12,7 +12,7 @@ jobs:
         steps:
             - checkout
             - run: sudo chown -R circleci:circleci /usr/local/bin
-            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.9.5/site-packages
+            - run: sudo chown -R circleci:circleci /usr/local/lib/python3/site-packages
             - restore_cache: 
                 key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
             - run:
@@ -24,7 +24,7 @@ jobs:
                 paths:
                     - ".venv"
                     - "/usr/local/bin"
-                    - "/usr/local/lib/python3.9.5/site-packages"
+                    - "/usr/local/lib/python3/site-packages"
     
     testing_stage:
         docker:
