@@ -12,9 +12,8 @@ jobs:
         steps:
             - checkout
             - run:
-                command: cd backend/
-            - run:
-                command: pip install -r requirements.txt
+                - command: cd backend/
+                - command: pip install -r requirements.txt
     
     testing_stage:
         docker:
@@ -22,9 +21,8 @@ jobs:
         steps:
             - checkout
             - run:
-                command: cd backend/
-            - run:
-                command: pip install -r requirements.txt
+                - command: cd backend/
+                - command: pip install -r requirements.txt
             - run:
                 command: pytest
 
