@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs:
+    python: circleci/python@1.4.0
+    cloud-run: circleci/gcp-cloud-run@1.0.2
+
+jobs:
+    build_stage:
+        working_directory: ~/currency-converter
+        docker:
+            - image: 'cimg/python:current'
+        steps:
+            - checkout
+            - run: sudo chown -R circleci:circleci /usr/local/bin
+            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.9/site-packages
+            - restore_cache: 
+                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+            - run:
+                command: cd backend/
+            - run:
+                command: pip install -r requirements.txt
+            - save_cache:
+                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+                paths:
+                    - ".venv"
+                    - "/usr/local/bin"
+                    - "/usr/local/lib/python3.9/site-packages"
+    
+    testing_stage:
+        docket:
+            - image: 'cimg/python:current'
+        steps:
+            - checkout
+            - attach_workspace:
+                at: ~/currency-converter
+            - run:
+                command: pytest
+
+workflows:
+    version: 2
+    sairyo_no_workflow:
+        jobs:
+            - build_stage
+            - testing_stage:
+                requires:
+                    - build_stage
+
+        
