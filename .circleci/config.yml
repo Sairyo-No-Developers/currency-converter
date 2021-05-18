@@ -44,5 +44,8 @@ workflows:
             - testing_stage:
                 requires:
                     - build_stage
+            - release_stage:
+                requires:
+                    - testing_stage
 
         
