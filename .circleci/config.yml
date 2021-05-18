@@ -27,6 +27,15 @@ jobs:
                 working_directory: backend
                 command: pytest
 
+    release_stage:
+        docker:
+            - image: 'cimg/base:stable'
+        steps:
+            - checkout
+            - cloud-run/init
+            - cloud-run/build:
+                tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter'
+
 workflows:
     version: 2
     sairyo_no_workflow:
