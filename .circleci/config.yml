@@ -40,12 +40,6 @@ workflows:
     version: 2
     sairyo_no_workflow:
         jobs:
-            - build_stage
-            - testing_stage:
-                requires:
-                    - build_stage
-            - release_stage:
-                requires:
-                    - testing_stage
+            - release_stage
 
         
