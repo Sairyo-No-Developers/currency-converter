@@ -8,7 +8,7 @@ jobs:
     build_stage:
         working_directory: ~/currency-converter
         docker:
-            - image: 'cimg/python:current'
+            - image: 'cimg/python:3.9.5'
         steps:
             - checkout
             - run: sudo chown -R circleci:circleci /usr/local/bin
@@ -28,7 +28,7 @@ jobs:
     
     testing_stage:
         docker:
-            - image: 'cimg/python:current'
+            - image: 'cimg/python:3.9.5'
         steps:
             - checkout
             - attach_workspace:
