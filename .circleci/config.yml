@@ -36,10 +36,26 @@ jobs:
             - cloud-run/build:
                 tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter'
 
+    deploy_stage:
+        docker:
+            - image: 'cimg/base:stable'
+        steps:
+            - checkout
+            - cloud-run/init
+            - cloud-run/deploy:
+                image: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter:latest'
+                platform: managed
+                region: asia-south1
+                service-name: currency-converter
+                unauthenticated: true
+
 workflows:
     version: 2
     sairyo_no_workflow:
         jobs:
             - release_stage
+            - deploy_stage:
+                requires:
+                    - release_stage
 
         
