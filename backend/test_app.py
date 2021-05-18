@@ -14,7 +14,7 @@ def test_home(client):
 
     rv = client.get('/')
     print("Test Running")
-    assert b'API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
+    assert b'Currency Exchange API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
     
 def test_currencies(client):
     data = client.get('/api/fetch-currencies').data

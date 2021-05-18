@@ -8,33 +8,46 @@ jobs:
     build_stage:
         working_directory: ~/currency-converter
         docker:
-            - image: 'cimg/python:current'
+            - image: 'cimg/python:3.9.5'
         steps:
             - checkout
-            - run: sudo chown -R circleci:circleci /usr/local/bin
-            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.9/site-packages
-            - restore_cache: 
-                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
             - run:
-                command: cd backend/
-            - run:
+                working_directory: backend
                 command: pip install -r requirements.txt
-            - save_cache:
-                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-                paths:
-                    - ".venv"
-                    - "/usr/local/bin"
-                    - "/usr/local/lib/python3.9/site-packages"
     
     testing_stage:
-        docket:
-            - image: 'cimg/python:current'
+        docker:
+            - image: 'cimg/python:3.9.5'
         steps:
             - checkout
-            - attach_workspace:
-                at: ~/currency-converter
             - run:
+                working_directory: backend
+                command: pip install -r requirements.txt
+            - run:
+                working_directory: backend
                 command: pytest
+
+    release_stage:
+        docker:
+            - image: 'cimg/base:stable'
+        steps:
+            - checkout
+            - cloud-run/init
+            - cloud-run/build:
+                tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter'
+
+    deploy_stage:
+        docker:
+            - image: 'cimg/base:stable'
+        steps:
+            - checkout
+            - cloud-run/init
+            - cloud-run/deploy:
+                image: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter:latest'
+                platform: managed
+                region: asia-south1
+                service-name: currency-converter
+                unauthenticated: true
 
 workflows:
     version: 2
@@ -44,5 +57,11 @@ workflows:
             - testing_stage:
                 requires:
                     - build_stage
+            - release_stage:
+                requires:
+                    - testing_stage
+            - deploy_stage:
+                requires:
+                    - release_stage
 
         

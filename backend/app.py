@@ -4,6 +4,7 @@ import pytest
 from flask import Flask
 from flask_cors import CORS
 app = Flask(__name__)
+import os
 
 
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000","https://mif.sairyonodevs.in"]}})
@@ -22,7 +23,7 @@ def getCurrencyTable():
 
 @app.route('/')
 def home():
-    return 'API For Fetching Currency Rates. Use route /api/fetch-currencies'
+    return 'Currency Exchange API For Fetching Currency Rates. Use route /api/fetch-currencies'
 
 @app.route('/api/fetch-currencies')
 def fetch():
@@ -32,7 +33,7 @@ def test_empty_db(client):
     """Start with a blank database."""
 
     rv = client.get('/')
-    assert b'API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
+    assert b'Currency Exchange API For Fetching Currency Rates. Use route /api/fetch-currencies' in rv.data
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=6002)
+    app.run(host="0.0.0.0",port=os.getenv('PORT', 6002))
