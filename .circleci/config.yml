@@ -3,7 +3,6 @@ version: 2.1
 orbs:
     python: circleci/python@1.4.0
     cloud-run: circleci/gcp-cloud-run@1.0.2
-    gcr-cleaner: evilms/gcr-cleaner@0.1.9
 
 jobs:
     build_stage:
@@ -34,7 +33,6 @@ jobs:
         steps:
             - checkout
             - cloud-run/init
-            - gcr-cleaner/all_images
             - cloud-run/build:
                 tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/currency-converter'
 
