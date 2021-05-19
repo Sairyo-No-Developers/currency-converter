@@ -54,19 +54,19 @@ workflows:
     deploy_workflow:
         jobs:
             - build_stage
-                filter:
+                filters:
                     branches:
                         only:
                             - main
             - testing_stage:
-                filter:
+                filters:
                     branches:
                         only:
                             - main
                 requires:
                     - build_stage
             - approval_stage:
-                filter:
+                filters:
                     branches:
                         only:
                             - main
@@ -74,14 +74,14 @@ workflows:
                 requires:
                     - testing_stage
             - release_stage:
-                filter:
+                filters:
                     branches:
                         only:
                             - main
                 requires:
                     - approval_stage
             - deploy_stage:
-                filter:
+                filters:
                     branches:
                         only:
                             - main
@@ -90,12 +90,12 @@ workflows:
     testing_workflow:
         jobs:
             - build_stage
-                filter:
+                filters:
                     branches:
                         ignore:
                             - main
             - testing_stage:
-                filter:
+                filters:
                     branches:
                         ignore:
                             - main
