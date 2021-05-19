@@ -52,33 +52,53 @@ jobs:
 workflows:
     version: 2
     deploy_workflow:
-        filter:
-            branches:
-                only:
-                    - main
         jobs:
             - build_stage
+                filter:
+                    branches:
+                        only:
+                            - main
             - testing_stage:
+                filter:
+                    branches:
+                        only:
+                            - main
                 requires:
                     - build_stage
             - approval_stage:
+                filter:
+                    branches:
+                        only:
+                            - main
                 type: approval
                 requires:
                     - testing_stage
             - release_stage:
+                filter:
+                    branches:
+                        only:
+                            - main
                 requires:
                     - approval_stage
             - deploy_stage:
+                filter:
+                    branches:
+                        only:
+                            - main
                 requires:
                     - release_stage
     testing_workflow:
-        filter:
-            branches:
-                ignore:
-                    - main
         jobs:
             - build_stage
+                filter:
+                    branches:
+                        ignore:
+                            - main
             - testing_stage:
+                filter:
+                    branches:
+                        ignore:
+                            - main
                 requires:
                     - build_stage
         
