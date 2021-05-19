@@ -51,17 +51,34 @@ jobs:
 
 workflows:
     version: 2
-    sairyo_no_workflow:
+    deploy_workflow:
+        filter:
+            branches:
+                only:
+                    - main
         jobs:
             - build_stage
             - testing_stage:
                 requires:
                     - build_stage
-            - release_stage:
+            - approval_stage:
+                type: approval
                 requires:
                     - testing_stage
+            - release_stage:
+                requires:
+                    - approval_stage
             - deploy_stage:
                 requires:
                     - release_stage
-
+    testing_workflow:
+        filter:
+            branches:
+                ignore:
+                    - main
+        jobs:
+            - build_stage
+            - testing_stage:
+                requires:
+                    - build_stage
         
